@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Switch from '@material-ui/core/Switch';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import {startDotaHueService} from './DotaHueServiceAgent.js';
 import './App.css';
 
 const colors = {
@@ -24,7 +24,7 @@ class App extends Component {
     super(props);
     this.state = {
       bountyRuneSpawning: true,
-      color: colors.red,
+      color: Object.keys(colors)[0],
     };
   }
 
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   handleSelectColor(color) {
-    this.setState({color: colors[color]});
+    this.setState({color});
   }
 
   render() {
@@ -44,22 +44,27 @@ class App extends Component {
         <header className="App-header" />
         <span>Bounty rune will spawn</span>
         <Switch
-          checked={this.state.bountyRuneSpawning}
+          checked={this.state.bountyRuneSpawning} q
           onChange={() => this.handleToggleSwitch()}
           color="primary"
+          inputProps={{
+            name: 'bounty-rune-spawning',
+          }}
         />
         <Select
           value={this.state.color}
           onChange={input => this.handleSelectColor(input.target.value)}
           inputProps={{
-            name: Object.keys(this.state.color)[0],
+            name: 'bounty-rune-spawning-color',
           }}
         >
-          {console.log(this.state.color)}
           {Object.keys(colors).map(color => (
             <MenuItem value={color}>{color}</MenuItem>
           ))}
         </Select>
+        <button onClick={startDotaHueService}>
+          Start
+        </button>
       </div>
     );
   }

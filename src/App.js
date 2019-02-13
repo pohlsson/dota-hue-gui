@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Switch from '@material-ui/core/Switch';
 import {startDotaHueService} from './Api.js';
-import {HuePicker} from 'react-color';
+import {GithubPicker} from 'react-color';
 
 class App extends Component {
 
@@ -46,22 +46,22 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+    const {lightConfiguration, selectedEvent} = this.state;
     return (
       <div className="App">
         <header className="App-header" />
         <span>Bounty rune will spawn</span>
         <Switch
-          checked={this.state.lightConfiguration.bountyRuneSpawning.on}
+          checked={selectedEvent.bountyRuneSpawning.on}
           onChange={() => this.handleToggleSwitch()}
           color="primary"
           inputProps={{
             name: 'bountyRuneSpawning',
           }}
         />
-        <HuePicker
+        <GithubPicker
           colors={['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB']}
-          color={this.state.lightConfiguration[this.state.selectedEvent].color}
+          color={lightConfiguration[selectedEvent].color}
           disableAlpha={true}
           onChangeComplete={color => this.handleSelectColor(color)}
         />

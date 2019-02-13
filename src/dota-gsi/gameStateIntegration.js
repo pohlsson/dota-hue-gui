@@ -2,21 +2,28 @@ const d2gsi = require('dota2-gsi');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const {setLightForEvent} = require('./hueService.js');
+const {handleGameTimeEvent, handleDayTimeEvent} = require('./eventHandlers.js');
 
 const configurationServerPort = process.env.REACT_APP_CONFIGURATION_PORT || 30033;
 const gsiPort = process.env.REACT_APP_GSI_PORT || 30011;
 
-let lightConfiguration = {}
+let lightConfiguration = {
+  default: {
+    on: true,
+    color: {
+      h: 0,
+      s: 0,
+      b: 255,
+    }
+  }
+};
 const configurationServer = express();
-
-
 configurationServer.use(cors());
 configurationServer.use(bodyParser.json());
 configurationServer.use(bodyParser.urlencoded({extended: true}));
 configurationServer.post('/', (req, res) => {
   console.log(req.body.bountyRuneSpawning.color.h * 182);
-  lightConfiguration = req.body;
+  lightConfiguration = Object.assign({}, lightConfiguration, req.body);
   res.end();
 });
 
@@ -34,18 +41,12 @@ gsiServer.events.on('newclient', client => {
     console.log("Now level " + level);
   });
 
-  client.on('map:game_time', gameTime => getColorForGameTimeEvent(gameTime));
+  client.on('map:game_time', gameTime => handleGameTimeEvent(gameTime));
+  client.on('map:day_time', dayTime => handleDayTimeEvent(dayTime));
 
   client.on('abilities:ability0:can_cast', canCast => {
     if (canCast) console.log("Ability0 off cooldown!");
   });
 });
-
-
-const getColorForGameTimeEvent = gameTime => {
-  if (gameTime % 5 === 0) {
-    setLightForEvent(lightConfiguration.bountyRuneSpawning)
-  }
-};
 
 

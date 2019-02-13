@@ -14,7 +14,7 @@ const setLightForEvent = event => {
     const hue = Math.round(event.color.h * 182.041666667);
     const sat = Math.round(event.color.s) * 100;
     const bri = Math.round(event.color.v)* 100;
-    hueService.light(4).setState({hue, sat, bri});
+    //hueService.light(4).setState({hue, sat, bri});
     console.log(hue)
     console.log(sat)
     console.log(bri)

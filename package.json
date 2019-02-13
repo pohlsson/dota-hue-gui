@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-gsi": "node ./dota-gsi/gameStateIntegration.js",
+    "start-gsi": "node ./src/dota-gsi/gameStateIntegration.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

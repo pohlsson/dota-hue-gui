@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Switch from '@material-ui/core/Switch';
 import {startDotaHueService} from './Api.js';
-import {CirclePicker} from 'react-color';
+import {HuePicker} from 'react-color';
 
 class App extends Component {
 
@@ -23,7 +23,7 @@ class App extends Component {
         ...state.lightConfiguration,
         [state.selectedEvent]: {
           ...state.lightConfiguration[state.selectedEvent],
-          enabled: !state.lightConfiguration[state.selectedEvent].enabled,
+          on: !state.lightConfiguration[state.selectedEvent].on,
         }
       }
     }));
@@ -46,19 +46,21 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <header className="App-header"/>
+        <header className="App-header" />
         <span>Bounty rune will spawn</span>
         <Switch
-          checked={this.state.lightConfiguration.bountyRuneSpawning.enabled}
+          checked={this.state.lightConfiguration.bountyRuneSpawning.on}
           onChange={() => this.handleToggleSwitch()}
           color="primary"
           inputProps={{
             name: 'bountyRuneSpawning',
           }}
         />
-        <CirclePicker
+        <HuePicker
+          colors={['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB']}
           color={this.state.lightConfiguration[this.state.selectedEvent].color}
           disableAlpha={true}
           onChangeComplete={color => this.handleSelectColor(color)}

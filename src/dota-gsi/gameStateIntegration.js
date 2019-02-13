@@ -15,6 +15,7 @@ configurationServer.use(cors());
 configurationServer.use(bodyParser.json());
 configurationServer.use(bodyParser.urlencoded({extended: true}));
 configurationServer.post('/', (req, res) => {
+  console.log(req.body.bountyRuneSpawning.color.h * 182);
   lightConfiguration = req.body;
   res.end();
 });

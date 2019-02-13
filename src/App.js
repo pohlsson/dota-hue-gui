@@ -1,68 +1,69 @@
 import React, {Component} from 'react';
 import Switch from '@material-ui/core/Switch';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import {startDotaHueService} from './DotaHueServiceAgent.js';
-import './App.css';
-
-const colors = {
-  red: {
-    hue: 0,
-    sat: 100,
-    bri: 66,
-  },
-  blue: {
-    hue: 234,
-    sat: 100,
-    bri: 66,
-  }
-};
+import {startDotaHueService} from './Api.js';
+import {CirclePicker} from 'react-color';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      bountyRuneSpawning: true,
-      color: Object.keys(colors)[0],
+      selectedEvent: "bountyRuneSpawning",
+      lightConfiguration: {
+        bountyRuneSpawning: {
+          on: true,
+        }
+      },
     };
   }
 
   handleToggleSwitch() {
     this.setState(state => ({
-      bountyRuneSpawning: !state.bountyRuneSpawning,
+      lightConfiguration: {
+        ...state.lightConfiguration,
+        [state.selectedEvent]: {
+          ...state.lightConfiguration[state.selectedEvent],
+          enabled: !state.lightConfiguration[state.selectedEvent].enabled,
+        }
+      }
     }));
   }
 
   handleSelectColor(color) {
-    this.setState({color});
+    this.setState(state => ({
+      lightConfiguration: {
+        ...state.lightConfiguration,
+        [state.selectedEvent]: {
+          ...state.lightConfiguration[state.selectedEvent],
+          color: color.hsv,
+        }
+      }
+    }))
+  }
+
+  handleStartDotaHueService() {
+    startDotaHueService({lightConfiguration: this.state.lightConfiguration})
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header" />
+        <header className="App-header"/>
         <span>Bounty rune will spawn</span>
         <Switch
-          checked={this.state.bountyRuneSpawning} q
+          checked={this.state.lightConfiguration.bountyRuneSpawning.enabled}
           onChange={() => this.handleToggleSwitch()}
           color="primary"
           inputProps={{
-            name: 'bounty-rune-spawning',
+            name: 'bountyRuneSpawning',
           }}
         />
-        <Select
-          value={this.state.color}
-          onChange={input => this.handleSelectColor(input.target.value)}
-          inputProps={{
-            name: 'bounty-rune-spawning-color',
-          }}
-        >
-          {Object.keys(colors).map(color => (
-            <MenuItem value={color}>{color}</MenuItem>
-          ))}
-        </Select>
-        <button onClick={startDotaHueService}>
+        <CirclePicker
+          color={this.state.lightConfiguration[this.state.selectedEvent].color}
+          disableAlpha={true}
+          onChangeComplete={color => this.handleSelectColor(color)}
+        />
+        <button onClick={() => this.handleStartDotaHueService()}>
           Start
         </button>
       </div>

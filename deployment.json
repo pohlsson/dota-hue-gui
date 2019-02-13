@@ -1,0 +1,26 @@
+{
+  "philipsHueUsername": "ebl5-f1hdWgZBlzopjbnPE8GEkdp2MTaofEAKFya",
+  "philipsHueIp": "192.168.0.101",
+  "server": {
+    "applicationConnectors": [
+      {
+        "type": "http",
+        "port": 54709
+      }
+    ],
+    "adminConnectors": [
+      {
+        "type": "http",
+        "port": "8081"
+      }
+    ]
+  },
+  "bountyRuneSpawning": {
+    "enabled": true,
+    "color": {
+      "sat": 97,
+      "bri": 96,
+      "hue": 21845
+    }
+  }
+}

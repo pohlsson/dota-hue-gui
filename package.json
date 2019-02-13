@@ -1,19 +1,27 @@
 {
-  "name": "dota-hue-gui",
+  "name": "dota2-hue",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "fs": "0.0.1-security",
+    "body-parser": "^1.18.3",
+    "color-convert": "^2.0.0",
+    "cors": "^2.8.5",
+    "dota2-gsi": "^1.0.2",
+    "express": "^4.16.4",
     "jsonfile": "^5.0.0",
     "node-cmd": "^3.0.0",
+    "philips-hue": "^1.2.0",
+    "rc-color-picker": "^1.2.6",
     "react": "^16.8.1",
+    "react-color": "^2.17.0",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.3",
     "superagent": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-gsi": "node ./dota-gsi/gameStateIntegration.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

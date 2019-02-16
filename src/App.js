@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Switch from '@material-ui/core/Switch';
 import {startDotaHueService} from './Api.js';
 import {GithubPicker} from 'react-color';
+import HueBridgeSetup from './hueBridgeSetup.js';
 
 class App extends Component {
 
@@ -50,6 +51,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
+        <HueBridgeSetup/>
+{/*
         <span>Bounty rune will spawn</span>
         <Switch
           checked={selectedEvent.bountyRuneSpawning.on}
@@ -68,6 +71,7 @@ class App extends Component {
         <button onClick={() => this.handleStartDotaHueService()}>
           Start
         </button>
+*/}
       </div>
     );
   }

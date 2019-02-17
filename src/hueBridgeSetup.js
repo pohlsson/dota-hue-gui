@@ -32,6 +32,10 @@ const StyledHueBridgeSetupHeader = styled.header`
     }
 `;
 
+const StyledError = styled(Typography)`
+    padding: 1em;
+`;
+
 const StyledButtons = styled.div`
     display: flex;
     padding-top: 2em;
@@ -44,6 +48,7 @@ class HueBridgeSetup extends React.Component {
         activeStep: 0,
         bridge: undefined,
         username: undefined,
+        error: undefined,
     };
 
     getSteps = () => {
@@ -57,10 +62,7 @@ class HueBridgeSetup extends React.Component {
             case 1:
                 return 'In order to connect to your Philips Hue bridge, you need to be authenticated. Do this by clicking the link button on the bridge, and then press Authenticate.';
             case 2:
-                return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
+                return "";
             default:
                 return 'Unknown step';
         }
@@ -76,7 +78,12 @@ class HueBridgeSetup extends React.Component {
         new Hue().auth(this.state.bridge).then(username => {
             this.setState({username});
             console.log(username);
-        }).catch(error => console.log(error)));
+        }).catch(error => {
+            this.setState({
+                error: "Error: Link button was not pressed!",
+                username: 'kKhPZ2KLUPV1wamm43A1mmfBS3l9P4Et139tklpm'
+            });
+        }));
 
     render() {
         const steps = this.getSteps();
@@ -99,6 +106,7 @@ class HueBridgeSetup extends React.Component {
                             <StepLabel>{label}</StepLabel>
                             <StepContent>
                                 <Typography>{this.getStepContent(index)}</Typography>
+                                {activeStep === 1 && <StyledError color="error">{this.state.error}</StyledError>}
                                 <div>
                                     <div>
                                         {activeStep === 1 &&

@@ -18,7 +18,6 @@ const StyledBridgeList = styled(RadioGroup)`
     padding: 1em;
     border: 1px solid #aaa;
     borer-radius: 3px;
-    height: 10em;
     flex: 1;
 `;
 

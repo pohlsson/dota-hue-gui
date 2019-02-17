@@ -10,7 +10,8 @@ const hue = new Hue();
 const bridges = [];
 
 const StyledHueBridgeFinder = styled.div`
-
+    width: 30em;
+    padding: 2em;
 `;
 
 const StyledBridgeList = styled(RadioGroup)`
@@ -46,16 +47,13 @@ class HueBridgeFinder extends React.Component {
         this.props.onSelectBridge(bridge)
     }
 
+    componentWillMount() {
+        this.findHueBridges();
+    }
+
     render() {
         return (
             <StyledHueBridgeFinder>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => this.findHueBridges()}
-                >
-                    Find Bridges
-                </Button>
                 <StyledBridgeList
                     value={this.state.selectedBridge}
                     onChange={event => this.handleSelectBridge(event)}

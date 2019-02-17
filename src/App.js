@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header" />
-        <HueBridgeSetup/>
+        <HueBridgeSetup open/>
 {/*
         <span>Bounty rune will spawn</span>
         <Switch

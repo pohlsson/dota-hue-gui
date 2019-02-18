@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "body-parser": "^1.18.3",
     "color-convert": "^2.0.0",
     "cors": "^2.8.5",
@@ -16,12 +17,14 @@
     "react": "^16.8.1",
     "react-color": "^2.17.0",
     "react-dom": "^16.8.1",
+    "react-icons": "^3.4.0",
     "react-scripts": "2.1.3",
+    "styled-components": "^4.1.3",
     "superagent": "^4.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-gsi": "node ./src/dota-gsi/gameStateIntegration.js",
+    "start": "react-scripts start ./src/configuration-gui",
+    "start-gsi": "node ./dota-gsi/gameStateIntegration.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

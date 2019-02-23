@@ -9,8 +9,14 @@ const {
   handleDayTimeEvent,
 } = require('./eventHandlers.js');
 
-const configurationServerPort = process.env.REACT_APP_CONFIGURATION_PORT || 30033;
-const gsiPort = process.env.REACT_APP_GSI_PORT || 30011;
+const configurationServerPort = 30033;
+const gsiPort = 30011;
+
+let hueConfiguration = {
+  bridge: undefined,
+  username: undefined,
+  lights: [],
+};
 
 let lightConfiguration = {
   default: {
@@ -31,11 +37,29 @@ configurationServer.use(cors());
 configurationServer.use(bodyParser.json());
 configurationServer.use(bodyParser.urlencoded({extended: true}));
 
-configurationServer.post('/', (req, res) => {
+configurationServer.post('/configuration', (req, res) => {
+  const configuration =  req.body;
+  const jsonfile =  require('jsonfile');
+  jsonfile.writeFile('dota-gsi/configuration.json', configuration, err => {
+    if (err) console.error(err)
+  });
+  res.end();
+});
+
+configurationServer.get('/configuration', (req, res) => {
+  const jsonfile =  require('jsonfile');
+  jsonfile.readFile('dota-gsi/configuration.json').then(configuration => {
+    res.send(configuration)
+  }).catch(() => res.send("no configuration found"));
+});
+
+configurationServer.post('/start', (req, res) => {
   lightConfiguration = Object.assign({}, lightConfiguration, req.body);
   res.end();
 });
 
+
+console.log(configurationServerPort, gsiPort)
 configurationServer.listen(configurationServerPort, () => {
   console.log('Configuration server listening on ' + configurationServerPort);
 });

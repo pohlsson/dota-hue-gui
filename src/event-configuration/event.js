@@ -1,28 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import Typography from "@material-ui/core/Typography/Typography";
 
 const StyledEventConfiguration = styled.div`
   display: flex;
 `;
 
-class Event extends React.Component {
+const Event = props => {
+  const {name, onClick} = props;
+  return (
+    <StyledEventConfiguration onClick={onClick}>
+      <h3>
+        <Typography>
+          {name}
+        </Typography>
+      </h3>
+    </StyledEventConfiguration>
+  )
+};
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      enabled: true,
-      eventName: props.eventName,
-      lights: props.lights
-    }
-  }
-
-  render() {
-    return (
-      <StyledEventConfiguration>
-        <div>Enabled:</div>
-        <div>Lights:</div>
-        <div>Color:</div>
-      </StyledEventConfiguration>
-    )
-  }
-}
+export default Event;

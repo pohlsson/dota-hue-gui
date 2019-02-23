@@ -23,7 +23,7 @@
     "superagent": "^4.1.0"
   },
   "scripts": {
-    "start": "react-scripts start ./src/configuration-gui",
+    "start": "react-scripts start",
     "start-gsi": "node ./dota-gsi/gameStateIntegration.js",
     "build": "react-scripts build",
     "test": "react-scripts test",

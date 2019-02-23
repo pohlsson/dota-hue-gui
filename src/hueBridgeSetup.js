@@ -139,7 +139,14 @@ class HueBridgeSetup extends React.Component {
       hue.bridge = hueConfig.bridge;
       hue.username = hueConfig.username;
       return hue.getLights();
-    }).then(lights => this.setState({lights}))
+    }).then(lights => this.setState({
+      lights: Object.keys(lights).map(lightId => ({
+        id: lightId,
+        type: lights[lightId].productname,
+        enabled: true,
+        color: "#fff",
+      }))
+    }))
       .catch(() => this.setState({error: "Error: Link button was not pressed!"}))
   };
 

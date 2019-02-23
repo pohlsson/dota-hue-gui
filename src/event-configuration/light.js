@@ -1,38 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import LightConfiguration from './lightConfiguration.js';
+import Switch from "@material-ui/core/Switch/Switch";
+import { BlockPicker } from 'react-color';
 
-const StyledLightConfiguration = styled.div`
+const StyledLight = styled.div`
 `;
 
-class LightSection extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      lights: props.lights,
-    }
-  }
-
-  updateLightConfiguration = configuration => {
-
-  };
-
-  render() {
-    const {lights} = this.state;
+const Light = props => {
+    const {enabled, type, color, onEnable, onChangeColor} = props;
     return (
-      <StyledLightConfiguration>
-        {lights.map(light => (
-          <LightConfiguration
-            key={{light.id}}
-            onUpdateConfiguration={configuration => this.updateLightConfiguration(configuration)}
-          >
-
-          </LightConfiguration>
-        ))}
-      </StyledLightConfiguration>
+      <StyledLight>
+        <Switch
+          checked={enabled}
+          onChange={(_, value) => onEnable(value)}
+        />
+        {type}
+        <BlockPicker
+          color={color}
+          onChangeComplete={onChangeColor}
+        />
+      </StyledLight>
     );
-  }
-}
+};
 
-export default LightSection;
+export default Light;

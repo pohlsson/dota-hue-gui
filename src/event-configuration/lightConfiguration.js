@@ -33,7 +33,7 @@ const LightConfiguration = props => {
         <Light
           {...light}
           onEnable={value => handleLightChange(light.id, 'enabled', value)}
-          onChangeColor={color => handleLightChange(light.id, 'color', color)}
+          onChangeColor={color => handleLightChange(light.id, 'color', color.hex)}
         />
       ))}
     </StyledLightConfiguration>

@@ -38,14 +38,7 @@ class App extends Component {
           lights: [],
         }
       },
-      // hueConfiguration: {
-      //   bridge: '192.168.0.101',
-      //   username: 'kKhPZ2KLUPV1wamm43A1mmfBS3l9P4Et139tklpm',
-      // }
     };
-    this.hueService = new Hue();
-    this.hueService.bridge = '192.168.0.101';
-    this.hueService.username = 'kKhPZ2KLUPV1wamm43A1mmfBS3l9P4Et139tklpm';
   }
 
   componentWillMount() {
@@ -103,16 +96,6 @@ class App extends Component {
     this.setState(state => ({hueBridgeSetupOpen: !state.hueBridgeSetupOpen}));
   }
 
-  toggleList(list, item) {
-    if (list.includes(item)) {
-      return list.filter(i => i !== item);
-    } else {
-      return [
-        ...list,
-        item,
-      ];
-    }
-  };
 
   render() {
     const {hueConfiguration, lightConfiguration, hueBridgeSetupOpen, selectedEvent} = this.state;
@@ -138,13 +121,6 @@ class App extends Component {
           lights={lightConfiguration[selectedEvent].lights}
           onChangeConfiguration={configuration => this.handleUpdateLightConfiguration(selectedEvent, configuration)}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => startDotaHueService({lightConfiguration})}
-        >
-          Load Configuration
-        </Button>
         <Button
           variant="contained"
           color="primary"

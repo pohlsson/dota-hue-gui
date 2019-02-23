@@ -5,61 +5,48 @@ const bodyParser = require('body-parser');
 const {
   handlePlayerActivityEvent,
   handleGameStateEvent,
-  handleGameTimeEvent,
+  handleClockTimeEvent,
   handleDayTimeEvent,
 } = require('./eventHandlers.js');
 
 const configurationServerPort = 30033;
 const gsiPort = 30011;
 
-let hueConfiguration = {
-  bridge: undefined,
-  username: undefined,
-  lights: [],
-};
+let configuration = undefined;
 
-let lightConfiguration = {
-  default: {
-    on: true,
-    lights: [1,2,3,4,5],
-    color: {
-      hsv: {
-        h: 0,
-        s: 0,
-        v: 1,
-      }
-    }
-  }
-};
 const configurationServer = express();
+
+const jsonfile = require('jsonfile');
+jsonfile.readFile('dota-gsi/configuration.json').then(conf => {
+  configuration = conf;
+  console.log("Loaded configuration");
+}).catch(() => console.log("no configuration found"));
 
 configurationServer.use(cors());
 configurationServer.use(bodyParser.json());
 configurationServer.use(bodyParser.urlencoded({extended: true}));
 
 configurationServer.post('/configuration', (req, res) => {
-  const configuration =  req.body;
-  const jsonfile =  require('jsonfile');
+  configuration = req.body;
+  const jsonfile = require('jsonfile');
   jsonfile.writeFile('dota-gsi/configuration.json', configuration, err => {
     if (err) console.error(err)
   });
+  console.log("Configuration is updated and saved");
   res.end();
 });
 
 configurationServer.get('/configuration', (req, res) => {
-  const jsonfile =  require('jsonfile');
-  jsonfile.readFile('dota-gsi/configuration.json').then(configuration => {
-    res.send(configuration)
-  }).catch(() => res.send("no configuration found"));
+  if(configuration) {
+    res.send(configuration);
+  } else {
+    const jsonfile = require('jsonfile');
+    jsonfile.readFile('dota-gsi/configuration.json').then(configuration => {
+      res.send(configuration);
+    }).catch(() => res.send("no configuration found"));
+  }
 });
 
-configurationServer.post('/start', (req, res) => {
-  lightConfiguration = Object.assign({}, lightConfiguration, req.body);
-  res.end();
-});
-
-
-console.log(configurationServerPort, gsiPort)
 configurationServer.listen(configurationServerPort, () => {
   console.log('Configuration server listening on ' + configurationServerPort);
 });
@@ -70,14 +57,14 @@ gsiServer.events.on('newclient', client => {
 
   client.on('player:activity', activity => {
     if (activity === 'playing') console.log("Game started!");
-    handlePlayerActivityEvent(activity, lightConfiguration);
+    handlePlayerActivityEvent(activity, configuration);
   });
   client.on('hero:level', level => {
     console.log("Now level " + level);
   });
-  client.on('map:game_state', gameState => handleGameStateEvent(gameState, lightConfiguration));
-  client.on('map:game_time', gameTime => handleGameTimeEvent(gameTime, lightConfiguration));
-  client.on('map:daytime', dayTime => handleDayTimeEvent(dayTime, lightConfiguration));
+  client.on('map:game_state', gameState => handleGameStateEvent(gameState, configuration));
+  client.on('map:clock_time', clockTime => handleClockTimeEvent(clockTime, configuration));
+  client.on('map:daytime', dayTime => handleDayTimeEvent(dayTime, configuration));
 
   client.on('abilities:ability0:can_cast', canCast => {
     if (canCast) console.log("Ability0 off cooldown!");

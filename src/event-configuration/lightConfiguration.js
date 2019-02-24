@@ -5,9 +5,9 @@ import styled from 'styled-components';
 const StyledLightConfiguration = styled.div`
   display:flex;
   flex-wrap: wrap;
-  margin-left: 10em;
+  margin-left: 5em;
   margin-right: 5em;
-  padding-top: 10em;
+  padding-top: 20em;
 `;
 
 const LightConfiguration = props => {

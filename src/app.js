@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import Hue from 'philips-hue';
-import {startDotaHueService, saveConfiguration, loadConfiguration} from './agent.js';
+import {loadConfiguration, saveConfiguration, startDotaHueService} from './agent.js';
 import {createGlobalStyle} from 'styled-components';
 import Event from 'event-configuration/event';
-import Button from "@material-ui/core/Button/Button";
+import IconButton from '@material-ui/core/IconButton';
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import Settings from '@material-ui/icons/Settings';
 import HueBridgeSetup from "hueBridgeSetup.js";
 import {SideMenu, SideMenuItem} from './sideMenu.js';
 import LightConfiguration from "event-configuration/lightConfiguration.js";
+import Header from "header.js";
+import Typography from "@material-ui/core/Typography/Typography";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -17,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: #fff;
-    margin: 0 20em 0 20em;
+    margin: 0 20em 0 25em;
   }
 `;
 
@@ -111,6 +114,19 @@ class App extends Component {
     return (
       <div>
         <GlobalStyle/>
+        <Header>
+          <h1>
+            <Typography>
+              Dota Hue
+            </Typography>
+          </h1>
+          <IconButton>
+            <Settings/>
+          </IconButton>
+          <IconButton onClick={this.handleSaveConfiguration}>
+          <SaveAlt/>
+          </IconButton>
+        </Header>
         <HueBridgeSetup
           open={hueBridgeSetupOpen}
           onClose={hueConfiguration => this.toggleHueBridgeSetup(hueConfiguration)}
@@ -134,13 +150,6 @@ class App extends Component {
           lights={lightConfiguration[selectedEvent].lights}
           onChangeConfiguration={configuration => this.handleUpdateLightConfiguration(selectedEvent, configuration)}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.handleSaveConfiguration}
-        >
-          Save Configuration
-        </Button>
       </div>
     );
   }

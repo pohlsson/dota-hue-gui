@@ -18,7 +18,7 @@ const StyledSideMenuItem = styled.li`
   cursor: pointer;
   border-top: 1px solid #475a6d;
   border-bottom: 1px solid #2d3033;
-  ::before { 
+  ::before {
     display: ${props => props.selected ? "block" : "none"};
     content: "";
     height: 100%;
@@ -27,6 +27,12 @@ const StyledSideMenuItem = styled.li`
     top: 0;
     left: 0;
     background-color: #6eafef; 
+  }
+  :hover::before { 
+    display: block;
+  }
+  :active::before { 
+    display: block;
   }
   color: #fff;
   p {

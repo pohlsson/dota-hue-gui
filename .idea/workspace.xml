@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e54f3a10-7682-4664-a34d-2c0ceca73e84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/bulbsSpot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/bulbsSultan.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/eventHandlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/eventHandlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/gameStateIntegration.js" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/gameStateIntegration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/hueService.js" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/hueService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sideMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event-configuration/light.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/event-configuration/light.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hueBridgeSetup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hueBridgeSetup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sideMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sideMenu.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,18 +55,18 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="29" />
-          <entry key="js" value="17520" />
+          <entry key="js" value="17720" />
           <entry key="json" value="30" />
           <entry key="svg" value="61" />
-          <entry key="txt" value="29" />
+          <entry key="txt" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="29" />
           <entry key="JSON" value="30" />
-          <entry key="JavaScript" value="17520" />
-          <entry key="PLAIN_TEXT" value="29" />
+          <entry key="JavaScript" value="17720" />
+          <entry key="PLAIN_TEXT" value="40" />
           <entry key="SVG" value="61" />
         </counts>
       </usages-collector>
@@ -93,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="327">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -126,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event-configuration/light.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="646">
+              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -146,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sideMenu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="419">
+              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -176,11 +167,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event-configuration/lightConfiguration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="41" column="4" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+            <state relative-caret-position="551">
+              <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -252,9 +243,9 @@
         <option value="$PROJECT_DIR$/dota-gsi/hueService.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/event-configuration/light.js" />
-        <option value="$PROJECT_DIR$/src/sideMenu.js" />
         <option value="$PROJECT_DIR$/src/app.js" />
         <option value="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" />
+        <option value="$PROJECT_DIR$/src/sideMenu.js" />
       </list>
     </option>
   </component>
@@ -369,7 +360,7 @@
       <workItem from="1550170464694" duration="1955000" />
       <workItem from="1550509291532" duration="3198000" />
       <workItem from="1550515622116" duration="4243000" />
-      <workItem from="1550993290613" duration="5677000" />
+      <workItem from="1550993290613" duration="6350000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor">
       <created>1550918147612</created>
@@ -392,11 +383,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550923295370</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix styles">
+      <created>1550999098039</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1550999098039</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70469000" />
+    <option name="totallyTimeSpent" value="71142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2064" height="1128" extended-state="6" />
@@ -414,9 +412,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.18008049" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.12877263" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5004936" side_tool="true" weight="0.3219316" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4995064" visible="true" weight="0.25955734" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4995064" weight="0.25955734" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -432,7 +430,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactor" />
     <MESSAGE value="Fixed end to end" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed end to end" />
+    <MESSAGE value="Fix styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix styles" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/event-configuration/colorSelector.js">
@@ -576,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event-configuration/light.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/agent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -593,10 +582,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sideMenu.js">
+    <entry file="file://$PROJECT_DIR$/src/event-configuration/lightConfiguration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        <state relative-caret-position="551">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -605,18 +594,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="327">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event-configuration/lightConfiguration.js">
+    <entry file="file://$PROJECT_DIR$/src/event-configuration/light.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="41" column="4" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+        <state relative-caret-position="646">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sideMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

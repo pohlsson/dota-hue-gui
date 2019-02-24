@@ -20,6 +20,7 @@ const jsonfile = require('jsonfile');
 jsonfile.readFile('dota-gsi/configuration.json').then(conf => {
   configuration = conf;
   console.log("Loaded configuration");
+  console.log(configuration.lightConfiguration)
 }).catch(() => console.log("no configuration found"));
 
 configurationServer.use(cors());

@@ -5,6 +5,7 @@ const setLightForEvent = (event, hueConfiguration) => {
   hueService.bridge = hueConfiguration.bridge;
   hueService.username = hueConfiguration.username;
   if (event !== undefined) {
+    console.log("Setting light for event: " + [event]);
     const convert = require('color-convert');
     event.lights.map(light => {
       if(light.enabled) {

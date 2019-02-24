@@ -18,23 +18,26 @@ const handleGameStateEvent = (gameState, configuration) => {
 
 const handleClockTimeEvent = (clockTime, configuration) => {
   const {lightConfiguration, hueConfiguration} = configuration;
-  if ((clockTime + 2) % 5 === 0 && !state.bountyRuneSpawning) {
-    state.bountyRuneSpawning = true;
-    setLightForEvent(lightConfiguration.bountyRuneSpawning, hueConfiguration);
+  console.log(clockTime);
+  if (lightConfiguration.bountyRuneSpawning && lightConfiguration.bountyRuneSpawning.enabled) {
+    if ((clockTime + 15) % 300 === 0 && clockTime > 0 && !state.bountyRuneSpawning) {
+      state.bountyRuneSpawning = true;
+      setLightForEvent(lightConfiguration.bountyRuneSpawning, hueConfiguration);
+    }
   }
-  if (clockTime % 5 === 0 && state.bountyRuneSpawning) {
+  if (clockTime % 300 === 0 && state.bountyRuneSpawning) {
+    console.log("Resetting light");
     state.bountyRuneSpawning = false;
     resetLights(lightConfiguration, hueConfiguration);
   }
 };
 
-const handleDayTimeEvent = (dayTime, lightConfiguration, hueConfiguration) => {
-  if (!dayTime && !state.night && lightConfiguration.night.enabled && state.gameHasStarted) {
-    state.night = true;
+const handleDayTimeEvent = (dayTime, configuration) => {
+  const {lightConfiguration, hueConfiguration} = configuration;
+  if (!dayTime) {
     setLightForEvent(lightConfiguration.night, hueConfiguration);
   }
-  if (dayTime && state.night) {
-    state.night = false;
+  if (dayTime) {
     resetLights(lightConfiguration, hueConfiguration);
   }
 };

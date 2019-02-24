@@ -143,6 +143,7 @@ class HueBridgeSetup extends React.Component {
       lights: Object.keys(lights).map(lightId => ({
         id: lightId,
         type: lights[lightId].productname,
+        name: lights[lightId].name,
         enabled: true,
         color: "#fff",
       }))

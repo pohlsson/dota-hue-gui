@@ -31,9 +31,6 @@ const StyledSideMenuItem = styled.li`
   :hover::before { 
     display: block;
   }
-  :active::before { 
-    display: block;
-  }
   color: #fff;
   p {
     color: #fff; 

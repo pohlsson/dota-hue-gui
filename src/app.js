@@ -1,23 +1,32 @@
 import React, {Component} from 'react';
 import Hue from 'philips-hue';
-import styled from 'styled-components';
 import {startDotaHueService, saveConfiguration, loadConfiguration} from './agent.js';
+import {createGlobalStyle} from 'styled-components';
 import Event from 'event-configuration/event';
 import Button from "@material-ui/core/Button/Button";
 import HueBridgeSetup from "hueBridgeSetup.js";
-import {List, ListItem} from 'common/list';
+import {SideMenu, SideMenuItem} from './sideMenu.js';
 import LightConfiguration from "event-configuration/lightConfiguration.js";
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    height: 100%;
+  }
+  html {
+    background: #4b564f;
+  }
+  body {
+    background: #fff;
+    margin: 0 20em 0 20em;
+  }
+`;
 
 const events = [
   'bountyRuneSpawning',
   'night',
 ];
 
-const StyledApp = styled.div`
-  position: absolute;
-  left: 0;
-  max-width: 20em;
-`;
+
 
 class App extends Component {
 
@@ -38,14 +47,7 @@ class App extends Component {
           lights: [],
         }
       },
-      // hueConfiguration: {
-      //   bridge: '192.168.0.101',
-      //   username: 'kKhPZ2KLUPV1wamm43A1mmfBS3l9P4Et139tklpm',
-      // }
     };
-    this.hueService = new Hue();
-    this.hueService.bridge = '192.168.0.101';
-    this.hueService.username = 'kKhPZ2KLUPV1wamm43A1mmfBS3l9P4Et139tklpm';
   }
 
   componentWillMount() {
@@ -103,37 +105,31 @@ class App extends Component {
     this.setState(state => ({hueBridgeSetupOpen: !state.hueBridgeSetupOpen}));
   }
 
-  toggleList(list, item) {
-    if (list.includes(item)) {
-      return list.filter(i => i !== item);
-    } else {
-      return [
-        ...list,
-        item,
-      ];
-    }
-  };
 
   render() {
     const {hueConfiguration, lightConfiguration, hueBridgeSetupOpen, selectedEvent} = this.state;
     return (
-      <StyledApp>
+      <div>
+        <GlobalStyle/>
         <HueBridgeSetup
           open={hueBridgeSetupOpen}
           onClose={hueConfiguration => this.toggleHueBridgeSetup(hueConfiguration)}
         />
         {hueConfiguration &&
-        <List>
+        <SideMenu>
           {events.map(event => (
-            <ListItem key={event}>
+            <SideMenuItem
+              key={event}
+              selected={selectedEvent === event}
+            >
               <Event
                 name={event}
                 onClick={() => this.setState({selectedEvent: event})}
                 lights={lightConfiguration[event].lights}
               />
-            </ListItem>
+            </SideMenuItem>
           ))}
-        </List>}
+        </SideMenu>}
         <LightConfiguration
           lights={lightConfiguration[selectedEvent].lights}
           onChangeConfiguration={configuration => this.handleUpdateLightConfiguration(selectedEvent, configuration)}
@@ -141,18 +137,11 @@ class App extends Component {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => startDotaHueService({lightConfiguration})}
-        >
-          Load Configuration
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
           onClick={this.handleSaveConfiguration}
         >
           Save Configuration
         </Button>
-      </StyledApp>
+      </div>
     );
   }
 }

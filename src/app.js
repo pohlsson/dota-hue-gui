@@ -5,6 +5,7 @@ import Event from 'event-configuration/event';
 import IconButton from '@material-ui/core/IconButton';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Settings from '@material-ui/icons/Settings';
+import Brightness3 from '@material-ui/icons/Brightness3';
 import HueBridgeSetup from "hueBridgeSetup.js";
 import {SideMenu, SideMenuItem} from './sideMenu.js';
 import LightConfiguration from "event-configuration/lightConfiguration.js";
@@ -20,13 +21,14 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: #fff;
-    margin: 0 20em 0 25em;
+    margin: 0 30em 0 30em;
   }
 `;
 
 const events = [
   'bountyRuneSpawning',
   'night',
+  'lowHealth',
 ];
 
 
@@ -117,7 +119,7 @@ class App extends Component {
         <Header>
           <h1>
             <Typography>
-              Dota Hue
+              Dota Hue Events
             </Typography>
           </h1>
           <IconButton>

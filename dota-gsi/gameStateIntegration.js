@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const {
   handlePlayerActivityEvent,
+  handleHealthPercentEvent,
   handleGameStateEvent,
   handleClockTimeEvent,
   handleDayTimeEvent,
@@ -20,7 +21,6 @@ const jsonfile = require('jsonfile');
 jsonfile.readFile('dota-gsi/configuration.json').then(conf => {
   configuration = conf;
   console.log("Loaded configuration");
-  console.log(configuration.lightConfiguration)
 }).catch(() => console.log("no configuration found"));
 
 configurationServer.use(cors());
@@ -44,7 +44,7 @@ configurationServer.get('/configuration', (req, res) => {
     const jsonfile = require('jsonfile');
     jsonfile.readFile('dota-gsi/configuration.json').then(configuration => {
       res.send(configuration);
-    }).catch(() => res.send("no configuration found"));
+    }).catch(() => res.send("No configuration found"));
   }
 });
 
@@ -63,6 +63,7 @@ gsiServer.events.on('newclient', client => {
   client.on('hero:level', level => {
     console.log("Now level " + level);
   });
+  client.on('hero:health_percent', healthPercent => handleHealthPercentEvent(healthPercent, configuration));
   client.on('map:game_state', gameState => handleGameStateEvent(gameState, configuration));
   client.on('map:clock_time', clockTime => handleClockTimeEvent(clockTime, configuration));
   client.on('map:daytime', dayTime => handleDayTimeEvent(dayTime, configuration));

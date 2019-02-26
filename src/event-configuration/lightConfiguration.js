@@ -5,8 +5,8 @@ import styled from 'styled-components';
 const StyledLightConfiguration = styled.div`
   display:flex;
   flex-wrap: wrap;
-  margin-left: 5em;
-  margin-right: 5em;
+  margin-left: 7em;
+  margin-right: 2em;
   padding-top: 20em;
 `;
 

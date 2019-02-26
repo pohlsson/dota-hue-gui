@@ -9,7 +9,7 @@ const StyledSideMenu = styled.ul`
   position: absolute;
   height: calc(100% - 5em);
   top: 5em;
-  left: 10em;
+  left: 20em;
   width: 15em;
 `;
 

@@ -3,11 +3,11 @@ import Light from './light.js';
 import styled from 'styled-components';
 
 const StyledLightConfiguration = styled.div`
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   margin-left: 7em;
   margin-right: 2em;
-  padding-top: 20em;
+  padding-top: 7em;
 `;
 
 const LightConfiguration = props => {
@@ -25,7 +25,6 @@ const LightConfiguration = props => {
         return light;
       }
     });
-    console.log(lightId, updatedLightConfiguration)
     onChangeConfiguration(updatedLightConfiguration);
   };
 

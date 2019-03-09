@@ -4,7 +4,7 @@ import Switch from "@material-ui/core/Switch/Switch";
 import {BlockPicker} from 'react-color';
 import Typography from "@material-ui/core/Typography/Typography";
 
-const colors = ['#f00', '#ff9100', '#fff200', '#2f0', '#00ffc8', '#4000ff', '#9d00ff', '#fff'];
+const colors = ['#f00', '#ff9100', '#fff200', '#2f0', '#00ffc8', '#4000ff', '#9d00ff'];
 
 const StyledLightWrapper = styled.div`
     flex: 1;
@@ -20,7 +20,6 @@ const StyledLightWrapper = styled.div`
     &:first-child {
       margin-left: 0;
     }
-    
 `;
 
 const StyledLight = styled.div`

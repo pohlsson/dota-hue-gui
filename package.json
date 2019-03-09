@@ -24,8 +24,10 @@
     "superagent": "^4.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-gui": "react-scripts start",
     "start-gsi": "node ./dota-gsi/gameStateIntegration.js",
+    "start-gsi-debug": "node %NODE_DEBUG_OPTION% ./dota-gsi/gameStateIntegration.js",
+    "start": "concurrently --kill-others \"npm run start-gui\" \"npm run start-gsi\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

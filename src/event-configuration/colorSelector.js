@@ -11,7 +11,7 @@ const StyledColorSelectorWrapper = styled.section`
 const ColorSelector = ({selectedColor, onSelectColor}) => (
   <StyledColorSelectorWrapper>
     <TwitterPicker
-      colors={['#B80000', '#FCCB00', '#008B02', '#004DCF',]}
+      colors={['#B80000', '#FCCB00', '#008B02', '#004DCF']}
       color={selectedColor}
       onChangeComplete={onSelectColor}
       width={170}

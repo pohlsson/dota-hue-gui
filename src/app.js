@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   html {
-    background: #4b564f;
+    background: #4e5f70;
   }
   body {
     background: #fff;
@@ -25,11 +25,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const events = [
-  'bountyRuneSpawning',
-  'night',
-  'lowHealth',
-];
+const events = {
+  bountyRuneSpawning: "Bounty rune spawning",
+  night: "Night",
+  lowHealth: "Low health",
+  lowMana: "Low mana"
+};
 
 
 
@@ -39,7 +40,7 @@ class App extends Component {
     super(props);
     this.state = {
       hueBridgeSetupOpen: false,
-      selectedEvent: events[0],
+      selectedEvent: Object.keys(events)[0],
       availableLights: [],
       openConfigurations: [],
       lightConfiguration: {
@@ -57,9 +58,6 @@ class App extends Component {
 
   componentWillMount() {
     loadConfiguration().then(res => {
-      if (res.body === "no configuration found") {
-        console.log("HERE")
-      }
       this.setState({
         hueConfiguration: res.body.hueConfiguration,
         lightConfiguration: res.body.lightConfiguration,
@@ -92,7 +90,7 @@ class App extends Component {
 
   toggleHueBridgeSetup(hueConfiguration) {
     if (hueConfiguration.username) {
-      const lightConfiguration = events.reduce((acc, event) => {
+      const lightConfiguration = Object.keys(events).reduce((acc, event) => {
         return ({
           ...acc,
           [event]: {
@@ -135,13 +133,13 @@ class App extends Component {
         />
         {hueConfiguration &&
         <SideMenu>
-          {events.map(event => (
+          {Object.keys(events).map(event => (
             <SideMenuItem
               key={event}
               selected={selectedEvent === event}
             >
               <Event
-                name={event}
+                name={events[event]}
                 onClick={() => this.setState({selectedEvent: event})}
                 lights={lightConfiguration[event].lights}
               />

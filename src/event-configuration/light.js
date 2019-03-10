@@ -43,7 +43,8 @@ const StyledLightHeader = styled.div`
 `;
 
 const Light = props => {
-  const {name, enabled, type, color, onEnable, onChangeColor} = props;
+  const {name, enabled, color, onEnable, onChangeColor} = props;
+  console.log(color)
   return (
     <StyledLightWrapper>
       <StyledLight enabled={enabled}>

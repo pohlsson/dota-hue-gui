@@ -8,10 +8,12 @@ module.exports = class HueService {
       this.hue.bridge = configuration.hueConfiguration.bridge;
       this.hue.username = configuration.hueConfiguration.username;
       this.lightConfiguration = configuration.lightConfiguration;
-      this.hue.getLights().then(lights => this.availableLightIds = Object.keys(lights)).catch(err => console.log(err));
+      this.hue.getLights().then(lights => {
+        this.availableLightIds = Object.keys(lights).filter(lightId => lights[lightId].productname.includes('color'))
+      }).catch(err => console.log(err));
     }
     this.defaultLight = {
-      hue: 0,
+      hue: 1000,
       sat: 0,
       bri: 254,
     };
@@ -41,7 +43,7 @@ module.exports = class HueService {
   resetLights() {
     console.log(this.availableLightIds);
     this.availableLightIds.map(light => (
-      this.hue.light(light.id).setState(this.defaultLight)
+      this.hue.light(light).setState(this.defaultLight)
     ));
   };
 };

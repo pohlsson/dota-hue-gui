@@ -10,6 +10,11 @@ module.exports = class EventHandler {
       timedEffectIsActive: false,
       night: false,
     };
+    this.activeEvents = [];
+  }
+
+  removeEventFromActiveEvents(event) {
+    return this.activeEvents.filter(item => item !== event);
   }
 
   setConfiguration(configuration) {
@@ -31,12 +36,14 @@ module.exports = class EventHandler {
 
   handleHealthPercentEvent(healthPercent) {
     const healthPercentLimit = 20;
-    if (healthPercent < healthPercentLimit && !this.state.timedEffectIsActive) {
+    if (healthPercent < healthPercentLimit && !this.activeEvents.includes('lowHealth')) {
       this.state.timedEffectIsActive = true;
+      this.activeEvents.push('lowHealth');
       this.hueService.setLightForEvent(this.lightConfiguration.lowHealth);
     }
-    if (healthPercent >= healthPercentLimit && this.state.timedEffectIsActive) {
+    if (healthPercent >= healthPercentLimit && this.activeEvents.includes('lowHealth')) {
       this.state.timedEffectIsActive = false;
+      this.removeEventFromActiveEvents('lowHealth');
       this.hueService.resetLights();
     }
   };
@@ -61,7 +68,7 @@ module.exports = class EventHandler {
         this.hueService.setLightForEvent(this.lightConfiguration.bountyRuneSpawning);
       }
     }
-    if (clockTime % 300 === 0 && state.bountyRuneSpawning) {
+    if (clockTime % 300 === 0 && this.state.bountyRuneSpawning) {
       console.log("Resetting light");
       this.state.bountyRuneSpawning = false;
       this.hueService.resetLights();

@@ -76,7 +76,6 @@ class App extends Component {
   };
 
   handleUpdateLightConfiguration = (event, configuration) => {
-    console.log(configuration)
     this.setState(state => ({
       lightConfiguration: {
         ...state.lightConfiguration,

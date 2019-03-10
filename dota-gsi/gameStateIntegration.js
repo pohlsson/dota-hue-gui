@@ -14,7 +14,7 @@ const jsonfile = require('jsonfile');
 jsonfile.readFile('dota-gsi/configuration.json').then(configuration => {
   eventHandler.setConfiguration(configuration);
   console.log("Loaded configuration");
-}).catch(() => console.log("no configuration found"));
+}).catch(() => console.log("No configuration found"));
 
 configurationServer.use(cors());
 configurationServer.use(bodyParser.json());
@@ -34,7 +34,7 @@ configurationServer.post('/configuration', (req, res) => {
 configurationServer.get('/configuration', (req, res) => {
   jsonfile.readFile('dota-gsi/configuration.json').then(configuration => {
     res.send(configuration);
-  }).catch(() => console.log("No configuration found"));
+  }).catch(() => res.sendStatus(404));
 });
 
 configurationServer.listen(configurationServerPort, () => {

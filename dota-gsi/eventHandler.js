@@ -78,16 +78,12 @@ module.exports = class EventHandler {
   handleDayTimeEvent(dayTime) {
     if (!dayTime) {
       this.state.night = true;
-      this.defaultLight = this.lightConfiguration.night.lights[0];
+      this.hueService.setDayLight(this.lightConfiguration.night.light);
     }
     if (dayTime) {
       this.state.night = false;
-      this.defaultLight = {
-        hue: 0,
-        sat: 0,
-        bri: 254,
-      };
+      const dayLights =
+      this.hueService.setDayLight(this.defaultLights);
     }
-    this.hueService.setDefaultLight(this.defaultLight);
   };
 };

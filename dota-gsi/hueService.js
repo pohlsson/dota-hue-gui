@@ -1,5 +1,11 @@
 const Hue = require('philips-hue');
 
+const DEFAULT_DAY_LIGHT = {
+  hue: 0,
+  sat: 0,
+  bri: 254,
+};
+
 module.exports = class HueService {
 
   constructor(configuration) {
@@ -9,14 +15,13 @@ module.exports = class HueService {
       this.hue.username = configuration.hueConfiguration.username;
       this.lightConfiguration = configuration.lightConfiguration;
       this.hue.getLights().then(lights => {
-        this.availableLightIds = Object.keys(lights).filter(lightId => lights[lightId].productname.includes('color'))
+        this.availableLightIds = Object.keys(lights).filter(lightId => lights[lightId].productname.includes('color'));
+        this.dayLight = this.availableLightIds.reduce((lightId, acc) => ({
+          ...acc,
+          [lightId]: DEFAULT_DAY_LIGHT
+        }), []);
       }).catch(err => console.log(err));
     }
-    this.defaultLight = {
-      hue: 1000,
-      sat: 0,
-      bri: 254,
-    };
   }
 
   setLightForEvent(event) {
@@ -35,15 +40,15 @@ module.exports = class HueService {
     }
   };
 
-  setDefaultLight(defaultLight) {
-    this.defaultLight = defaultLight;
+  setDayLight(daylight) {
+    let updatedDayLight = this.dayLight;
+
     this.resetLights();
   };
 
   resetLights() {
-    console.log(this.availableLightIds);
-    this.availableLightIds.map(light => (
-      this.hue.light(light).setState(this.defaultLight)
+    this.availableLightIds.map((lightId, index) => (
+      this.hue.light(lightId).setState(this.dayLight[index])
     ));
   };
 };

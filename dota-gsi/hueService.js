@@ -1,10 +1,5 @@
 const Hue = require('philips-hue');
-
-const DEFAULT_DAY_LIGHT = {
-  hue: 0,
-  sat: 0,
-  bri: 254,
-};
+const DAY_LIGHT_COLOR = "#fffcdb";
 
 module.exports = class HueService {
 
@@ -15,40 +10,40 @@ module.exports = class HueService {
       this.hue.username = configuration.hueConfiguration.username;
       this.lightConfiguration = configuration.lightConfiguration;
       this.hue.getLights().then(lights => {
-        this.availableLightIds = Object.keys(lights).filter(lightId => lights[lightId].productname.includes('color'));
-        this.dayLight = this.availableLightIds.reduce((lightId, acc) => ({
-          ...acc,
-          [lightId]: DEFAULT_DAY_LIGHT
-        }), []);
+        const availableLightIds = Object.keys(lights).filter(lightId => lights[lightId].productname.includes('color'));
+        this.defaultLight = availableLightIds.map((lightId) => ({
+          id: lightId,
+          enabled: true,
+          color: DAY_LIGHT_COLOR,
+        }));
       }).catch(err => console.log(err));
-    }
-  }
-
-  setLightForEvent(event) {
-    if (event !== undefined) {
-      const convert = require('color-convert');
-      event.lights.map(light => {
-        if (light.enabled) {
-          const [h] = convert.hex.hsv(light.color);
-          this.hue.light(light.id).setState({
-            hue: h * 182,
-            sat: 254,
-            bri: 254,
-          })
-        }
-      });
     }
   };
 
-  setDayLight(daylight) {
-    let updatedDayLight = this.dayLight;
+  setLightForEvent(event) {
+    if (event !== undefined) {
+      event.lights.map(light => this.setLight(light));
+    }
+  };
 
+  setLight(light) {
+    if (light.enabled) {
+      const convert = require('color-convert');
+      const [h] = convert.hex.hsv(light.color);
+      this.hue.light(light.id).setState({
+        hue: h * 182,
+        sat: 254,
+        bri: 254,
+      })
+    }
+  };
+
+  setDefaultLight(defaultLight) {
+    this.defaultLight = defaultLight;
     this.resetLights();
   };
 
   resetLights() {
-    this.availableLightIds.map((lightId, index) => (
-      this.hue.light(lightId).setState(this.dayLight[index])
-    ));
+    this.setLight(this.defaultLight);
   };
 };

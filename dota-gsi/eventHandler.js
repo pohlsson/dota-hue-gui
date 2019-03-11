@@ -18,7 +18,7 @@ module.exports = class EventHandler {
   }
 
   setConfiguration(configuration) {
-    if(configuration) {
+    if (configuration) {
       this.hueService = new HueService(configuration);
       this.lightConfiguration = configuration.lightConfiguration;
     }
@@ -78,12 +78,11 @@ module.exports = class EventHandler {
   handleDayTimeEvent(dayTime) {
     if (!dayTime) {
       this.state.night = true;
-      this.hueService.setDayLight(this.lightConfiguration.night.light);
+      this.hueService.setDefaultLight(this.lightConfiguration.night.light);
     }
     if (dayTime) {
       this.state.night = false;
-      const dayLights =
-      this.hueService.setDayLight(this.defaultLights);
+      this.hueService.setDefaultLight("#fffcdb");
     }
   };
 };

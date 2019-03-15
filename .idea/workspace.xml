@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e54f3a10-7682-4664-a34d-2c0ceca73e84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dota-gsi/banner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/banner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/configuration.json" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/configuration.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/eventHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/eventHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/gameStateIntegration.js" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/gameStateIntegration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dota-gsi/hueService.js" beforeDir="false" afterPath="$PROJECT_DIR$/dota-gsi/hueService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/event-configuration/light.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/event-configuration/light.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hueBridgeFinder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hueBridgeFinder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hueBridgeSetup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hueBridgeSetup.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -70,7 +57,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="29" />
-          <entry key="js" value="26254" />
+          <entry key="js" value="26272" />
           <entry key="json" value="71" />
           <entry key="svg" value="61" />
           <entry key="txt" value="62" />
@@ -80,7 +67,7 @@
         <counts>
           <entry key=".env file" value="29" />
           <entry key="JSON" value="71" />
-          <entry key="JavaScript" value="26254" />
+          <entry key="JavaScript" value="26272" />
           <entry key="PLAIN_TEXT" value="62" />
           <entry key="SVG" value="61" />
         </counts>
@@ -111,8 +98,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="51" />
+            <state relative-caret-position="133">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,29 +110,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event-configuration/light.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+            <state relative-caret-position="1178">
+              <caret line="74" column="2" lean-forward="true" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dota-gsi/eventHandler.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/header.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -175,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/event-configuration/lightConfiguration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="874">
-              <caret line="46" column="4" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+            <state relative-caret-position="228">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -245,9 +217,9 @@
         <option value="$PROJECT_DIR$/src/hueBridgeFinder.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/header.js" />
-        <option value="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" />
-        <option value="$PROJECT_DIR$/src/event-configuration/light.js" />
         <option value="$PROJECT_DIR$/dota-gsi/eventHandler.js" />
+        <option value="$PROJECT_DIR$/src/event-configuration/light.js" />
+        <option value="$PROJECT_DIR$/src/event-configuration/lightConfiguration.js" />
       </list>
     </option>
   </component>
@@ -267,7 +239,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="470" />
     <option name="y" value="-8" />
     <option name="width" value="1401" />
@@ -466,7 +438,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118656000" />
+    <option name="totallyTimeSpent" value="118762000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -496,7 +468,7 @@
       <window_info anchor="bottom" id="Messages" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3782696" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004936" side_tool="true" weight="0.3219316" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4995064" visible="true" weight="0.29678068" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4995064" visible="true" weight="0.37927565" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -660,8 +632,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="51" />
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -693,20 +668,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event-configuration/lightConfiguration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="46" column="4" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/event-configuration/light.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        <state relative-caret-position="1178">
+          <caret line="74" column="2" lean-forward="true" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -717,6 +682,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event-configuration/lightConfiguration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

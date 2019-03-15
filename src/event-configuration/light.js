@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import Switch from "@material-ui/core/Switch/Switch";
 import {GithubPicker} from 'react-color';
 import Typography from "@material-ui/core/Typography/Typography";
-import ColorLens from '@material-ui/icons/ColorLens';
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import Button from "@material-ui/core/Button/Button";
 
 const colors = ['#f00', '#ff9100', '#fff200', '#2f0', '#00ffc8', '#4000ff', '#9d00ff'];
 
@@ -46,39 +43,35 @@ const StyledColorPicker = styled(GithubPicker)`
 `;
 
 
-class Light extends React.Component {
-
-
-  render() {
-    const {light, onEnable, onChangeColor} = this.props;
-    const {name, enabled, color, type} = light;
-    console.log(type);
-    return (
-      <StyledLightWrapper
-        disabled={!enabled}
-        color={color}>
-        <StyledLight disabled={!enabled}>
-          <StyledColorIndicator
-            disabled={!enabled}
-            color={color}
-          />
-          <StyledSwitch
-            selectedColor={color}
-            color="primary"
-            checked={enabled}
-            onChange={(_, value) => onEnable(value)}
-          />
-          <Typography>{name}</Typography>
-          {enabled && <StyledColorPicker
-            triangle="hide"
-            color={color}
-            colors={colors}
-            onChangeComplete={onChangeColor}
-          />}
-        </StyledLight>
-      </StyledLightWrapper>
-    );
-  }
-}
+const Light = props => {
+  const {light, onEnable, onChangeColor} = props;
+  const {name, enabled, color, type} = light;
+  console.log(type);
+  return (
+    <StyledLightWrapper
+      disabled={!enabled}
+      color={color}>
+      <StyledLight disabled={!enabled}>
+        <StyledColorIndicator
+          disabled={!enabled}
+          color={color}
+        />
+        <StyledSwitch
+          selectedColor={color}
+          color="primary"
+          checked={enabled}
+          onChange={(_, value) => onEnable(value)}
+        />
+        <Typography>{name}</Typography>
+        {enabled && <StyledColorPicker
+          triangle="hide"
+          color={color}
+          colors={colors}
+          onChangeComplete={onChangeColor}
+        />}
+      </StyledLight>
+    </StyledLightWrapper>
+  );
+};
 
 export default Light;

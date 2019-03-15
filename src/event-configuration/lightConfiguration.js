@@ -1,7 +1,6 @@
 import React from 'react';
 import Light from './light.js';
 import styled from 'styled-components';
-import IconButton from "@material-ui/core/IconButton/IconButton";
 
 const StyledLightConfiguration = styled.div`
   padding-left: 5em;

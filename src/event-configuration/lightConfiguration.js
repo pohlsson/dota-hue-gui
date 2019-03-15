@@ -1,12 +1,16 @@
 import React from 'react';
 import Light from './light.js';
 import styled from 'styled-components';
+import IconButton from "@material-ui/core/IconButton/IconButton";
 
 const StyledLightConfiguration = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 7em;
-  margin-right: 2em;
+  padding-left: 5em;
+`;
+
+const StyledLightList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 2em;
   padding-top: 7em;
 `;
 
@@ -30,13 +34,15 @@ const LightConfiguration = props => {
 
   return (
     <StyledLightConfiguration>
+      <StyledLightList>
       {lights.map(light => (
         <Light
-          {...light}
+          light={light}
           onEnable={value => handleLightChange(light.id, 'enabled', value)}
           onChangeColor={color => handleLightChange(light.id, 'color', color.hex)}
         />
       ))}
+      </StyledLightList>
     </StyledLightConfiguration>
   );
 };

@@ -1,5 +1,5 @@
 const Hue = require('philips-hue');
-const DAY_LIGHT_COLOR = "#fffcdb";
+const DAY_LIGHT_COLOR = "#ffffe6";
 
 module.exports = class HueService {
 
@@ -11,11 +11,12 @@ module.exports = class HueService {
       this.lightConfiguration = configuration.lightConfiguration;
       this.hue.getLights().then(lights => {
         const availableLightIds = Object.keys(lights).filter(lightId => lights[lightId].productname.includes('color'));
-        this.defaultLight = availableLightIds.map((lightId) => ({
+        this.dayLight = availableLightIds.map((lightId) => ({
           id: lightId,
           enabled: true,
           color: DAY_LIGHT_COLOR,
         }));
+        this.defaultLight = this.dayLight;
       }).catch(err => console.log(err));
     }
   };
@@ -39,11 +40,16 @@ module.exports = class HueService {
   };
 
   setDefaultLight(defaultLight) {
-    this.defaultLight = defaultLight;
+    if(defaultLight) {
+      this.defaultLight = defaultLight;
+    }
+    else {
+      this.defaultLight = this.dayLight;
+    }
     this.resetLights();
   };
 
   resetLights() {
-    this.setLight(this.defaultLight);
+    this.defaultLight.map(light => this.setLight(light));
   };
 };

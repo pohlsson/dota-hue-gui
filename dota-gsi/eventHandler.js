@@ -10,11 +10,7 @@ module.exports = class EventHandler {
       timedEffectIsActive: false,
       night: false,
     };
-    this.activeEvents = [];
-  }
-
-  removeEventFromActiveEvents(event) {
-    return this.activeEvents.filter(item => item !== event);
+    this.activeEvents = {};
   }
 
   setConfiguration(configuration) {
@@ -31,31 +27,35 @@ module.exports = class EventHandler {
   };
 
   handleGameStateEvent(gameState) {
-    console.log(gameState)
   };
 
+  handleLevelEvent(level) {
+    switch (level) {
+      case 1:
+        this.hueService.resetLights();
+    }
+  }
+
   handleHealthPercentEvent(healthPercent) {
-    const healthPercentLimit = 20;
-    if (healthPercent < healthPercentLimit && !this.activeEvents.includes('lowHealth')) {
-      this.state.timedEffectIsActive = true;
-      this.activeEvents.push('lowHealth');
+    const healthPercentLimit = 25;
+    if (healthPercent < healthPercentLimit && !this.activeEvents.lowHealth) {
+      this.activeEvents.lowHealth = true;
       this.hueService.setLightForEvent(this.lightConfiguration.lowHealth);
     }
-    if (healthPercent >= healthPercentLimit && this.activeEvents.includes('lowHealth')) {
-      this.state.timedEffectIsActive = false;
-      this.removeEventFromActiveEvents('lowHealth');
+    if (healthPercent >= healthPercentLimit && this.activeEvents.lowHealth) {
+      this.activeEvents.lowHealth = false;
       this.hueService.resetLights();
     }
   };
 
   handleManaPercentEvent(manaPercent) {
     const manaPercentLimit = 20;
-    if (manaPercent < manaPercentLimit && !this.state.timedEffectIsActive) {
-      this.state.timedEffectIsActive = true;
+    if (manaPercent < manaPercentLimit && !this.activeEvents.lowMana) {
+      this.activeEvents.lowMana = true;
       this.hueService.setLightForEvent(this.lightConfiguration.lowMana);
     }
-    if (manaPercent >= manaPercentLimit && this.state.timedEffectIsActive) {
-      this.state.timedEffectIsActive = false;
+    if (manaPercent >= manaPercentLimit && this.activeEvents.lowMana) {
+      this.activeEvents.lowMana = false;
       this.hueService.resetLights();
     }
   };
@@ -63,26 +63,25 @@ module.exports = class EventHandler {
   handleClockTimeEvent(clockTime) {
     const timeBuffer = 15;
     if (this.lightConfiguration.bountyRuneSpawning && this.lightConfiguration.bountyRuneSpawning.enabled) {
-      if ((clockTime + timeBuffer) % 300 === 0 && clockTime > 0 && !this.state.bountyRuneSpawning) {
-        this.state.bountyRuneSpawning = true;
+      if ((clockTime + timeBuffer) % 300 === 0 && (clockTime > 0) && !this.activeEvents.bountyRuneSpawning) {
+        this.activeEvents.bountyRuneSpawning = true;
         this.hueService.setLightForEvent(this.lightConfiguration.bountyRuneSpawning);
       }
     }
-    if (clockTime % 300 === 0 && this.state.bountyRuneSpawning) {
-      console.log("Resetting light");
-      this.state.bountyRuneSpawning = false;
+    if (clockTime % 300 === 0 && this.activeEvents.bountyRuneSpawning) {
+      this.activeEvents.bountyRuneSpawning = false;
       this.hueService.resetLights();
     }
   };
 
   handleDayTimeEvent(dayTime) {
-    if (!dayTime) {
-      this.state.night = true;
-      this.hueService.setDefaultLight(this.lightConfiguration.night.light);
-    }
-    if (dayTime) {
-      this.state.night = false;
-      this.hueService.setDefaultLight("#fffcdb");
+    if(this.lightConfiguration.night && this.lightConfiguration.night.enabled) {
+      if (!dayTime) {
+        this.hueService.setDefaultLight(this.lightConfiguration.night.lights);
+      }
+      if (dayTime) {
+        this.hueService.setDefaultLight();
+      }
     }
   };
 };

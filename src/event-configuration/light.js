@@ -1,71 +1,84 @@
 import React from 'react';
 import styled from 'styled-components';
 import Switch from "@material-ui/core/Switch/Switch";
-import {BlockPicker} from 'react-color';
+import {GithubPicker} from 'react-color';
 import Typography from "@material-ui/core/Typography/Typography";
+import ColorLens from '@material-ui/icons/ColorLens';
+import IconButton from "@material-ui/core/IconButton/IconButton";
+import Button from "@material-ui/core/Button/Button";
 
 const colors = ['#f00', '#ff9100', '#fff200', '#2f0', '#00ffc8', '#4000ff', '#9d00ff'];
 
-const StyledLightWrapper = styled.div`
-    flex: 1;
-    width: auto;
-    min-width: 10em;
-    background: #eee;
-    border: 1px solid #aaa;
-    padding: 0.2em;
-    margin-left: -1px;
-    >div {
-      width: auto;
-    }
-    &:first-child {
-      margin-left: 0;
-    }
+const StyledLightWrapper = styled.li`
+    display: block;
+    background-color: ${props => props.disabled ? "#dedede" : "#efefef"};
+    border-bottom: 1px solid #bbb;
+    border-top: 1px solid #eee;
 `;
 
 const StyledLight = styled.div`
-    width: 15em;
-    text-align: -webkit-center
-    .block-picker {
-        display: ${props => props.enabled ? "block" : "none"};
-        width: auto !important;
-        background: #ccc !important;
-        border: 1px solid #aaa;
-        margin: 1em;
+    display: flex;
+    line-height: 1em;
+    position: relative;
+    p {
+      flex: 1;
+      padding: 1em;
+      ${props => props.disabled && "color: #aaa"}
     }
 `;
 
-const StyledLightHeader = styled.div`
-  display: flex;
-  cursor: pointer;
-  >p {
-    margin-top: 1em;
-  }
+const StyledSwitch = styled(Switch)`
+  border-right: 1px solid #bbb;
 `;
 
-const Light = props => {
-  const {name, enabled, color, onEnable, onChangeColor} = props;
-  console.log(color)
-  return (
-    <StyledLightWrapper>
-      <StyledLight enabled={enabled}>
-        <StyledLightHeader>
-          <Switch
+const StyledColorIndicator = styled.div`
+  width: 0.5em;
+  background-color: ${props => props.disabled ? "#aaa" : props.color};
+  border-left: 1px solid #bbb;
+`;
+
+const StyledColorPicker = styled(GithubPicker)`
+  width: auto !important;
+  margin: 0.3em;
+  -webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+`;
+
+
+class Light extends React.Component {
+
+
+  render() {
+    const {light, onEnable, onChangeColor} = this.props;
+    const {name, enabled, color, type} = light;
+    console.log(type);
+    return (
+      <StyledLightWrapper
+        disabled={!enabled}
+        color={color}>
+        <StyledLight disabled={!enabled}>
+          <StyledColorIndicator
+            disabled={!enabled}
+            color={color}
+          />
+          <StyledSwitch
+            selectedColor={color}
             color="primary"
             checked={enabled}
             onChange={(_, value) => onEnable(value)}
           />
           <Typography>{name}</Typography>
-
-        </StyledLightHeader>
-        <BlockPicker
-          triangle="hide"
-          color={color}
-          colors={colors}
-          onChangeComplete={onChangeColor}
-        />
-      </StyledLight>
-    </StyledLightWrapper>
-  );
-};
+          {enabled && <StyledColorPicker
+            triangle="hide"
+            color={color}
+            colors={colors}
+            onChangeComplete={onChangeColor}
+          />}
+        </StyledLight>
+      </StyledLightWrapper>
+    );
+  }
+}
 
 export default Light;

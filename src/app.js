@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {loadConfiguration, saveConfiguration, startDotaHueService} from './agent.js';
+import {loadConfiguration, saveConfiguration} from './agent.js';
 import {createGlobalStyle} from 'styled-components';
 import Event from 'event-configuration/event';
 import IconButton from '@material-ui/core/IconButton';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Settings from '@material-ui/icons/Settings';
-import Brightness3 from '@material-ui/icons/Brightness3';
 import HueBridgeSetup from "hueBridgeSetup.js";
 import {SideMenu, SideMenuItem} from './sideMenu.js';
 import LightConfiguration from "event-configuration/lightConfiguration.js";

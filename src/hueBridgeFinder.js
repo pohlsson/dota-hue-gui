@@ -6,7 +6,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabe
 
 const Hue = require('philips-hue');
 const hue = new Hue();
-const bridges = [];
 
 const StyledHueBridgeFinder = styled.div`
     width: 30em;

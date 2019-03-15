@@ -1,6 +1,6 @@
 {
   "name": "dota2-hue",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -27,7 +27,7 @@
     "start-gui": "react-scripts start",
     "start-gsi": "node ./dota-gsi/gameStateIntegration.js",
     "start-gsi-debug": "node %NODE_DEBUG_OPTION% ./dota-gsi/gameStateIntegration.js",
-    "start": "concurrently --kill-others \"npm run start-gui\" \"npm run start-gsi\"",
+    "start": "concurrently --kill-others \"npm run --silent start-gui\" \"npm run start-gsi\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

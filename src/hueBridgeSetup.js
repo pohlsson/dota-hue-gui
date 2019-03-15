@@ -183,14 +183,4 @@ class HueBridgeSetup extends React.Component {
   }
 }
 
-{/*<Button
-  variant="contained"
-  color="primary"
-  disabled={(activeStep === 0 && !bridge) || (activeStep === 1 && !username)}
-  onClick={() => this.props.onClose({bridge, username})}
->
-  Finish
-</Button>*/
-}
-
 export default HueBridgeSetup;

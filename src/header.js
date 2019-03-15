@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledHeader = styled.header`
   height: 5em;
   position: absolute;
+  z-index: 100;
   display: flex;
   left: 0;
   right: 0;

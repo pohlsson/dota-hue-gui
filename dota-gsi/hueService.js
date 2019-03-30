@@ -1,5 +1,5 @@
 const Hue = require('philips-hue');
-const DAY_LIGHT_COLOR = "#ffffe6";
+const DAY_LIGHT_COLOR = "#f0c080";
 
 module.exports = class HueService {
 

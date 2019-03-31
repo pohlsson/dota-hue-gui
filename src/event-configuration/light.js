@@ -11,6 +11,7 @@ const StyledLightWrapper = styled.li`
     background-color: ${props => props.disabled ? "#dedede" : "#efefef"};
     border-bottom: 1px solid #bbb;
     border-top: 1px solid #eee;
+    border-right: 1px solid #bbb;
 `;
 
 const StyledLight = styled.div`

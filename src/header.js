@@ -11,6 +11,11 @@ const StyledHeader = styled.header`
   background: #000;
   padding-left: 10em;
   padding-right: 21em;
+  
+  @media (max-width: 1500px) {
+    padding-left: 5em;
+    padding-right: 5em;
+  }
   >*:first-child {
     flex: 1;
   }

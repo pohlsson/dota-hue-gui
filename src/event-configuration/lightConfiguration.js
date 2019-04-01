@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 const StyledLightConfiguration = styled.div`
   padding-left: 5em;
+  @media (max-width: 1500px) {
+    padding-left: 13em;
+  }
 `;
 
 const StyledLightList = styled.ul`

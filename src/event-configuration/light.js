@@ -47,7 +47,6 @@ const StyledColorPicker = styled(GithubPicker)`
 const Light = props => {
   const {light, onEnable, onChangeColor} = props;
   const {name, enabled, color, type} = light;
-  console.log(type);
   return (
     <StyledLightWrapper
       disabled={!enabled}

@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #fff;
     margin: 0 30em 0 30em;
+    
+    @media (max-width: 1500px) {
+      margin: 0 5em 0 5em;
+    }
   }
 `;
 

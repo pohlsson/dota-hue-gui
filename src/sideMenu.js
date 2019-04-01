@@ -11,6 +11,11 @@ const StyledSideMenu = styled.ul`
   top: 5em;
   left: 20em;
   width: 15em;
+  
+  @media (max-width: 1500px) {
+    left: 5em;
+    width: 13em;
+  }
 `;
 
 const StyledSideMenuItem = styled.li`
